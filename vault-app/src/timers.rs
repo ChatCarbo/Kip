@@ -20,12 +20,15 @@ pub enum LockReason {
 }
 
 impl LockReason {
-    /// Message affiché sur l'écran de déverrouillage.
-    pub fn message(self) -> &'static str {
-        match self {
-            LockReason::Inactivity => "Coffre verrouillé après inactivité.",
-            LockReason::Suspend => "Coffre verrouillé (mise en veille).",
-            LockReason::SessionLocked => "Coffre verrouillé (session Windows verrouillée).",
+    /// Message affiché sur l'écran de déverrouillage, en français ou en anglais.
+    pub fn message(self, english: bool) -> &'static str {
+        match (self, english) {
+            (LockReason::Inactivity, false) => "Coffre verrouillé après inactivité.",
+            (LockReason::Suspend, false) => "Coffre verrouillé (mise en veille).",
+            (LockReason::SessionLocked, false) => "Coffre verrouillé (session Windows verrouillée).",
+            (LockReason::Inactivity, true) => "Vault locked after inactivity.",
+            (LockReason::Suspend, true) => "Vault locked (sleep).",
+            (LockReason::SessionLocked, true) => "Vault locked (Windows session locked).",
         }
     }
 }
@@ -213,7 +216,8 @@ mod tests {
             LockReason::Suspend,
             LockReason::SessionLocked,
         ] {
-            assert!(reason.message().starts_with("Coffre verrouillé"));
+            assert!(reason.message(false).starts_with("Coffre verrouillé"));
+            assert!(reason.message(true).starts_with("Vault locked"));
         }
     }
 
