@@ -1,0 +1,10 @@
+[package]
+name = "vault-import"
+description = "Import et export de mots de passe : CSV, JSON Bitwarden, XML KeePassXC (sans dépendance)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+# Volontairement aucune dépendance : ce code lit des fichiers non fiables, moins il y a
+# de code tiers, moins il y a de surface d'attaque, et tout se teste sans réseau.
+[dependencies]

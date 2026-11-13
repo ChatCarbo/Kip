@@ -1,0 +1,18 @@
+[package]
+name = "vault-app"
+description = "Interface Windows du gestionnaire de mots de passe (iced) et intégration système"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "kip"
+path = "src/main.rs"
+
+[dependencies]
+vault-core = { path = "../vault-core" }
+vault-import = { path = "../vault-import" }
+zeroize = "1"
+# Rendu logiciel (tiny-skia) : en iced 0.12 il est inclus d'office, seul `wgpu` est une option. Sans les
+# fonctionnalités par défaut, pas de GPU : mémoire minimale.
+iced = { version = "0.12", default-features = false, features = ["tokio"] }

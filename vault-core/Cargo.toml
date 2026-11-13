@@ -1,0 +1,12 @@
+[package]
+name = "vault-core"
+description = "Noyau du gestionnaire de mots de passe : cryptographie, format de fichier, modèle de données"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+argon2 = { version = "0.5", features = ["zeroize"] }
+chacha20poly1305 = "0.10"
+rand_core = { version = "0.6", features = ["getrandom"] }
+zeroize = "1"

@@ -1,0 +1,8 @@
+# Durcissement à l'édition de liens (DEP, ASLR et CFG ne se règlent pas à l'exécution).
+# DYNAMICBASE, HIGHENTROPYVA et NXCOMPAT sont déjà activés par défaut par rustc pour MSVC.
+[target.x86_64-pc-windows-msvc]
+rustflags = [
+    "-C", "target-feature=+crt-static",   # binaire autonome, sans runtime Visual C++ à installer
+    "-C", "control-flow-guard",           # protection du flot de contrôle
+    "-C", "link-arg=/CETCOMPAT",          # compatibilité pile fantôme (CET)
+]
