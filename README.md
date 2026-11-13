@@ -1,3 +1,4 @@
+<img width="512" height="512" alt="kip_512" src="https://github.com/user-attachments/assets/ef68e8c8-dcb0-4494-b03b-1068406c057a" />
 # Kip
 
 Gestionnaire de mots de passe local, rapide et sécurisé, développé en Rust pour Windows (x86_64).
