@@ -27,3 +27,4 @@ Prérequis : Rust (avec la cible MSVC sous Windows).
 rustup target add x86_64-pc-windows-msvc
 cargo test --workspace
 cargo run -p vault-app --release
+```
